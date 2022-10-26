@@ -3,6 +3,7 @@ import axios from "axios";
 import { API_KEY } from "../../helpers/helpers";
 import { Typography, List } from "@mui/material";
 import Article from "../Article/Article";
+import { ArticleObj } from "../../helpers/interfaces";
 const HomePage = () => {
   const [todaysArticles, setTodaysArticles] = useState([]);
   // useEffect === useFootgun
@@ -58,7 +59,6 @@ const HomePage = () => {
 
   return (
     <>
-      {/* Wyświetl Typography, ma wyglądać jak h2, ma być wyśrodkowany, wielkość czcionki ma być ustawiona na 2rem, margines dolny ma być ustawiony .8rem, wyświetlany tekst: "Today's hottest news:" */}
       <Typography
         variant="h2"
         align="center"
@@ -66,8 +66,12 @@ const HomePage = () => {
       >
         Today's hottest news:
       </Typography>
-      {/* Wyświetl List (komponent z MUI), ustaw jej szerokość na 100%, i wyśrodkuj jej kontent */}
-      <List sx={{ width: "100%", alignContent: "center" }}></List>
+      <List sx={{ width: "100%", alignContent: "center" }}>
+        {todaysArticles.length !== 0 &&
+          todaysArticles.map((article: ArticleObj) => {
+            return <Article art={article} key={article.title} />;
+          })}
+      </List>
       {/* {todaysArticles.length !== 0 && (
         <Article art={todaysArticles[0]} key={1} />
       )} */}

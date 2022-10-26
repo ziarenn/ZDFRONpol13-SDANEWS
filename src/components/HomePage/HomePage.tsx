@@ -72,9 +72,6 @@ const HomePage = () => {
             return <Article art={article} key={article.title} />;
           })}
       </List>
-      {/* {todaysArticles.length !== 0 && (
-        <Article art={todaysArticles[0]} key={1} />
-      )} */}
     </>
   );
 };

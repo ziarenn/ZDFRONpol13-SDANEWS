@@ -9,6 +9,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import MenuItem from "@mui/material/MenuItem";
+import { Link } from "react-router-dom";
 
 const pages = ["Home", "Search"];
 
@@ -82,9 +83,11 @@ const Navbar = () => {
             SDA NEWS
           </Typography>
           <Box sx={{ flexGrow: 0 }}>
-            <IconButton sx={{ p: 0 }}>
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-            </IconButton>
+            <Link to="/login">
+              <IconButton sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              </IconButton>
+            </Link>
           </Box>
         </Toolbar>
       </Container>

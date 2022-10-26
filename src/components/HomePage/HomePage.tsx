@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { API_KEY } from "../../helpers/helpers";
 import { Typography, List } from "@mui/material";
+import Article from "../Article/Article";
 const HomePage = () => {
   const [todaysArticles, setTodaysArticles] = useState([]);
-
   // useEffect === useFootgun
   useEffect(() => {
     // 2022-10-25, rrrr-mm-dd
@@ -68,6 +68,9 @@ const HomePage = () => {
       </Typography>
       {/* Wyświetl List (komponent z MUI), ustaw jej szerokość na 100%, i wyśrodkuj jej kontent */}
       <List sx={{ width: "100%", alignContent: "center" }}></List>
+      {todaysArticles.length !== 0 && (
+        <Article art={todaysArticles[0]} key={1} />
+      )}
     </>
   );
 };

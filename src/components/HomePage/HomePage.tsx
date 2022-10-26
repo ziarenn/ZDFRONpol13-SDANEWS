@@ -68,9 +68,9 @@ const HomePage = () => {
       </Typography>
       {/* Wyświetl List (komponent z MUI), ustaw jej szerokość na 100%, i wyśrodkuj jej kontent */}
       <List sx={{ width: "100%", alignContent: "center" }}></List>
-      {todaysArticles.length !== 0 && (
+      {/* {todaysArticles.length !== 0 && (
         <Article art={todaysArticles[0]} key={1} />
-      )}
+      )} */}
     </>
   );
 };

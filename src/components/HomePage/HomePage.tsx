@@ -24,6 +24,7 @@ const HomePage = () => {
         : today.getMonth() + 1;
     const year = today.getFullYear();
     const date = `${year}-${month}-${day}`;
+
     axios
       .get(
         `https://newsapi.org/v2/everything?q=world&from=${date}&language=en&sortBy=popularity&apiKey=${API_KEY}`

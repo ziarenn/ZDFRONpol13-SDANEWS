@@ -57,10 +57,17 @@ const Navbar = () => {
                 display: { xs: "block", md: "none" },
               }}
             >
+              {/* const pages = ["Home", "Search"]; */}
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
+                <Link
+                  key={page}
+                  to={page === "Home" ? "/" : page.toLowerCase()}
+                  style={{ textDecoration: "none", color: "black" }}
+                >
+                  <MenuItem onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{page}</Typography>
+                  </MenuItem>
+                </Link>
               ))}
             </Menu>
           </Box>
@@ -83,7 +90,7 @@ const Navbar = () => {
             SDA NEWS
           </Typography>
           <Box sx={{ flexGrow: 0 }}>
-            <Link to="/login">
+            <Link to="/login" style={{ textDecoration: "none" }}>
               <IconButton sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>

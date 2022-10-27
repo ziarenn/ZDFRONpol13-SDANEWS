@@ -4,7 +4,7 @@ import { ListItem, ListItemText, Card } from "@mui/material";
 const Article: React.FC<ArticleProps> = ({ art }) => {
   return (
     <ListItem>
-      <Card variant="outlined" sx={{ mb: "10px" }}>
+      <Card variant="outlined" sx={{ mb: "10px" }} >
         <a href={art.url} style={{ textDecoration: "none" }} target="__blank">
           {/* obrazek i tytul artykulu */}
           <img src={art.urlToImage} alt={art.title} style={{ width: "100%" }} />

@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./components/HomePage/HomePage";
+import RegisterPage from "./components/RegisterPage/RegisterPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   return (
@@ -12,7 +13,6 @@ function App() {
         {/* TU KOMPONENTY KTORE BEDA SIE POJAWIAC I ZNIKAC (PODSTRONY KTORE BEDA SIE PRZELACZAC) */}
         <Routes>
           <Route path="/" element={<HomePage />} />
-
         </Routes>
         {/* ------- */}
         {/* TU PONIZEJ ZNOW KOMPONENTY KTORE MAJA SIE WYSWIETLAC CALY CZAS, TU NP. FOOTER */}

@@ -1,24 +1,31 @@
-import React from "react";
+import { useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./components/HomePage/HomePage";
 import RegisterPage from "./components/RegisterPage/RegisterPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "./components/LoginPage/LoginPage";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebaseConfig";
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setLoggedIn(true);
+    } else {
+      setLoggedIn(false);
+    }
+  });
+
   return (
     <div className="App">
       <BrowserRouter>
-        {/* TU KOMPONENTY KTORE MAJA SIE WYSWIETLAC CALY CZAS */}
-        <Navbar />
-        {/* ------- */}
-        {/* TU KOMPONENTY KTORE BEDA SIE POJAWIAC I ZNIKAC (PODSTRONY KTORE BEDA SIE PRZELACZAC) */}
+        <Navbar loggedIn={loggedIn} />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
         </Routes>
-        {/* ------- */}
-        {/* TU PONIZEJ ZNOW KOMPONENTY KTORE MAJA SIE WYSWIETLAC CALY CZAS, TU NP. FOOTER */}
       </BrowserRouter>
     </div>
   );

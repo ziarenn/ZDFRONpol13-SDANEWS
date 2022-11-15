@@ -9,6 +9,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import MenuItem from "@mui/material/MenuItem";
+import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { NavbarProps } from "../../helpers/interfaces";
 const pages = ["Home", "Search"];
@@ -90,15 +91,19 @@ const Navbar: React.FC<NavbarProps> = ({ loggedIn }) => {
             SDA NEWS
           </Typography>
           <Box sx={{ flexGrow: 0 }}>
-            {/* 1. W zależności od stanu loggedIn, ustaw atrybut "to" Linka na "/user" lub "/login". Jeżeli loggedIn jest równe true, to "/user", jeżeli loggedIn jest równe false to "/login" */}
-            {/* turnary operator */}
-            <Link to="/login" style={{ textDecoration: "none" }}>
-              {/*  */}
-              {/* Renderowanie warunkowe: jeżeli loggedIn jest równe true, wyświetl IconButton (po prostu to co już jest), jeżeli loggedIn jest równy false, wyświetl Button (MUI), w sx'ach my 2, color white, display block. TextContent: Log in */}
-              <IconButton sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-              {/*  */}
+            <Link
+              to={loggedIn ? "/user" : "/login"}
+              style={{ textDecoration: "none" }}
+            >
+              {loggedIn ? (
+                <IconButton sx={{ p: 0 }}>
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                </IconButton>
+              ) : (
+                <Button sx={{ my: 2, color: "white", display: "block" }}>
+                  Log in
+                </Button>
+              )}
             </Link>
           </Box>
         </Toolbar>

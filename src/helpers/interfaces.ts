@@ -21,3 +21,4 @@ export interface RegisterFormData extends LoginFormData {
 export interface NavbarProps {
   loggedIn: boolean;
 }
+

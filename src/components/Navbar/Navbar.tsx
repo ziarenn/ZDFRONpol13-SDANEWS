@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -12,10 +12,26 @@ import MenuItem from "@mui/material/MenuItem";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { NavbarProps } from "../../helpers/interfaces";
+import { auth, storage } from "../../firebaseConfig";
+import { ref, getDownloadURL } from "firebase/storage";
 const pages = ["Home", "Search"];
 
 const Navbar: React.FC<NavbarProps> = ({ loggedIn }) => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+
+  const [profilePhoto, setProfilePhoto] = useState("/");
+
+  useEffect(() => {
+    if (loggedIn && auth.currentUser) {
+      const storageRef = ref(
+        storage,
+        `/users/${auth.currentUser.uid}/profilePhoto`
+      );
+      getDownloadURL(storageRef)
+        .then((url) => setProfilePhoto(url))
+        .catch((err) => console.error(err.message));
+    }
+  }, [loggedIn]);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -25,6 +41,7 @@ const Navbar: React.FC<NavbarProps> = ({ loggedIn }) => {
     setAnchorElNav(null);
   };
 
+  // 8. Wstaw stan profilePhoto w atrybut src Avatara (111)
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -97,7 +114,7 @@ const Navbar: React.FC<NavbarProps> = ({ loggedIn }) => {
             >
               {loggedIn ? (
                 <IconButton sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  <Avatar alt="Remy Sharp" src={profilePhoto} />
                 </IconButton>
               ) : (
                 <Button sx={{ my: 2, color: "white", display: "block" }}>

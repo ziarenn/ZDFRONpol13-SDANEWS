@@ -25,3 +25,7 @@ export interface NavbarProps {
 export interface ProfilePhotoFormData {
   profilePhotoList: FileList;
 }
+
+export interface SearchFormData {
+  keyword: string;
+}

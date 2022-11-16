@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import { NavbarProps } from "../../helpers/interfaces";
 import { auth, storage } from "../../firebaseConfig";
 import { ref, getDownloadURL } from "firebase/storage";
+
 const pages = ["Home", "Search"];
 
 const Navbar: React.FC<NavbarProps> = ({ loggedIn }) => {
@@ -41,7 +42,6 @@ const Navbar: React.FC<NavbarProps> = ({ loggedIn }) => {
     setAnchorElNav(null);
   };
 
-  // 8. Wstaw stan profilePhoto w atrybut src Avatara (111)
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -114,7 +114,9 @@ const Navbar: React.FC<NavbarProps> = ({ loggedIn }) => {
             >
               {loggedIn ? (
                 <IconButton sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src={profilePhoto} />
+                  {profilePhoto !== "/" && (
+                    <Avatar alt="profile photo" src={profilePhoto} />
+                  )}
                 </IconButton>
               ) : (
                 <Button sx={{ my: 2, color: "white", display: "block" }}>

@@ -22,3 +22,6 @@ export interface NavbarProps {
   loggedIn: boolean;
 }
 
+export interface ProfilePhotoFormData {
+  profilePhotoList: FileList;
+}

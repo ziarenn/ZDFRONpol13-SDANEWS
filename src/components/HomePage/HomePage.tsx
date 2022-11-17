@@ -4,7 +4,7 @@ import { API_KEY } from "../../helpers/helpers";
 import { Typography, List } from "@mui/material";
 import Article from "../Article/Article";
 import { ArticleObj } from "../../helpers/interfaces";
-import { request } from "http";
+
 const HomePage = () => {
   const [todaysArticles, setTodaysArticles] = useState([]);
   // useEffect === useFootgun
@@ -58,7 +58,6 @@ const HomePage = () => {
   // >12332112331</Button>;
 
   // Komponent List (MUI) = <ul> z HTML'a przystosowany tak, żeby łatwiej się go stylowało
-
 
   return (
     <>

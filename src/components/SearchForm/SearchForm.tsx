@@ -37,3 +37,6 @@ export default SearchForm;
 // W środku forma:
 // - TextField (MUI) placeholder Keyword, zarejestruj pod nazwą keyword, w sx'ach: my .5rem, display block, mx auto
 // - Button (MUI) variant contained, type submit, sx: display block, mx auto. TextContent: Search
+
+// export x === {} przy imporcie
+// export default === brak {} przy imporcie
